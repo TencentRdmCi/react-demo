@@ -1,33 +1,25 @@
 import React, { Component } from 'react';
 
+import FilterLink from '../../containers/FilterLink.js';
+import { VisibilityFilters } from '../../actions';
+
 export default class Footer extends Component {
-
-  renderFilter(filter, name) {
-    if (filter === this.props.filter) {
-      return name;
-    }
-
-    return (
-      <a href="#"
-         onClick={e => {
-           e.preventDefault();
-           this.props.onFilterChange(filter);
-         }}>
-        {name}
-      </a>
-    );
-  }
-
   render() {
     return (
       <p>
         Show:
         {' '}
-        {this.renderFilter('SHOW_ALL', 'ALL')}
+        <FilterLink filter={VisibilityFilters.SHOW_ALL}>
+          All
+        </FilterLink>
         {', '}
-        {this.renderFilter('SHOW_COMPLETED', 'Completed')}
+        <FilterLink filter={VisibilityFilters.SHOW_ACTIVE}>
+          Active
+        </FilterLink>
         {', '}
-        {this.renderFilter('SHOW_ACTIVE', 'Active')}
+        <FilterLink filter={VisibilityFilters.SHOW_COMPLETED}>
+          Complete
+        </FilterLink>
       </p>
     );
   }

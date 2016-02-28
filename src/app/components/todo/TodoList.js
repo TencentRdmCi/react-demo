@@ -1,22 +1,23 @@
-import 'bootstrap/dist/css/bootstrap.css';
-import 'jquery';
-
-import 'bootstrap';
-
 import React, { Component } from 'react';
 import Todo from './todo.js';
 
 class TodoList extends Component {
-  render() {
+  constructor(props) {
+    super(props);
+    this.onClickTodo = this.onClickTodo.bind(this);
+  }
 
-    const todoList = this.props.todos.map((todo, index) => {
-      return (
-        <Todo isComplete={todo.isComplete}
-              text={todo.text}
-              onClickTodo={() => this.props.onClickTodo(index)}
-              key={index}/>
-      );
-    });
+  onClickTodo = (index) => function () {
+    this.props.onClickTodo(index);
+  }.bind(this);
+
+  render() {
+    const todoList = this.props.todos.map((todo, index) =>
+        <Todo {...todo}
+          onClickTodo={this.onClickTodo(index)}
+          key={index}
+        />
+    );
 
     return (
       <ul>

@@ -1,18 +1,24 @@
+import 'bootstrap/dist/css/bootstrap.css';
+import 'jquery';
+import 'bootstrap';
+
 import React from 'react';
 import { render } from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
-import TodoApp from './components/todo/todoApp.js';
 
-import todoReducer from './reducers/todo.js';
+import App from './components/todo/App.js';
 
-const store = createStore(todoReducer);
+import configureStore from './store/configureStore';
+
+const store = configureStore({});
+
 const root = document.querySelector('.wrapper');
 
 render(
   <Provider store={store}>
-    <TodoApp />
+    <App />
   </Provider>,
   root
 );
