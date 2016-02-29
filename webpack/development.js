@@ -3,7 +3,12 @@ import config        from './config';
 import webpackConfig from './_base';
 
 webpackConfig.devtool = 'source-map';
-webpackConfig.entry.app.push(
+webpackConfig.entry.todo.push(
+  `webpack-dev-server/client?${config.get('webpack_public_path')}`,
+  `webpack/hot/dev-server`
+);
+
+webpackConfig.entry.async.push(
   `webpack-dev-server/client?${config.get('webpack_public_path')}`,
   `webpack/hot/dev-server`
 );

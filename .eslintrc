@@ -13,6 +13,10 @@
     "react/jsx-uses-react": 2,
     "react/jsx-uses-vars": 2,
     "react/react-in-jsx-scope": 2,
+    "react/jsx-closing-bracket-location": [
+      1,
+      "after-props"
+    ],
     "react/prop-types": 0,
     "react/jsx-boolean-value": 0,
     "react/jsx-quotes": 0,
@@ -44,7 +48,8 @@
         "allowSwitch": false
       }
     ],
-    "keyword-spacing": [2,
+    "keyword-spacing": [
+      2,
       {
         "before": true,
         "after": true,

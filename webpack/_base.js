@@ -9,12 +9,17 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 const paths = config.get('utils_paths');
 
+const resolve = require('path').resolve;
+
 const webpackConfig = {
   name: 'client',
   target: 'web',
   entry: {
-    app: [
-      paths.project(config.get('dir_src')) + '/index.js'
+    todo: [
+      paths.project(config.get('dir_src')) + '/todo/index.js'
+    ],
+    async: [
+      paths.project(config.get('dir_src')) + '/async/index.js'
     ],
     vendor: config.get('vendor_dependencies')
   },
@@ -34,9 +39,19 @@ const webpackConfig = {
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.DedupePlugin(),
     new HtmlWebpackPlugin({
-      template: paths.src('index.html'),
+      // template: paths.src('index.html'),
+      template: resolve(__dirname, '../src/app/todo/index.html'),
       hash: true,
-      filename: 'index.html',
+      chunks: ['todo', 'vendor'],
+      filename: 'todo/index.html',
+      inject: 'body'
+    }),
+    new HtmlWebpackPlugin({
+      // template: paths.src('index.html'),
+      template: resolve(__dirname, '../src/app/async/index.html'),
+      hash: true,
+      chunks: ['async', 'vendor'],
+      filename: 'async/index.html',
       inject: 'body'
     }),
     new ExtractTextPlugin('[name].[hash].css', {
@@ -45,7 +60,7 @@ const webpackConfig = {
   ],
   resolve: {
     extensions: ['', '.js', '.jsx', '.css', '.scss', '.png', '.jpg', '.svg'],
-    alias: config.get('utils_aliases')
+    //alias: config.get('utils_aliases')
   },
   module: {
     loaders: [

@@ -17,8 +17,7 @@ export default class Todo extends Component {
       <li onClick={this.onClickTodo}
         style={{
           textDecoration: complete ? 'line-through' : 'none'
-        }}
-      >
+        }}>
         {text}
       </li>
     );

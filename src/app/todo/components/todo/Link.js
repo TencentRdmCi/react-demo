@@ -8,7 +8,7 @@ export default class Link extends Component {
 
   onClick = (e) => {
     e.preventDefault();
-    this.props.onClick(e);
+    this.props.onClick();
   };
 
   render() {

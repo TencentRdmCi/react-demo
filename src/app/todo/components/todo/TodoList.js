@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Todo from './todo.js';
+import Todo from './Todo.js';
 
 class TodoList extends Component {
   constructor(props) {
@@ -15,8 +15,7 @@ class TodoList extends Component {
     const todoList = this.props.todos.map((todo, index) =>
         <Todo {...todo}
           onClickTodo={this.onClickTodo(index)}
-          key={index}
-        />
+          key={index} />
     );
 
     return (

@@ -31,8 +31,7 @@ class AddTodo extends Component {
         <div className="form-group">
           <input ref={this.selectNode}
             className="form-control"
-            placeholder="Add todo here."
-          />
+            placeholder="Add todo here." />
         </div>
         <button type="submit" className="btn">
           Add Todo
